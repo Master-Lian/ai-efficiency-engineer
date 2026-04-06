@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import utils.rag_core; print\\('导入成功'\\)\")",
+      "Bash(python -c \"from utils.rag_core import validate_api_key; print\\('验证函数存在'\\)\")"
+    ]
+  }
+}

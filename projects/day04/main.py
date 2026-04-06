@@ -10,6 +10,7 @@ def main():
     
     # 2. 加载知识库
     knowledge = load_knowledge()
+    logger.info(f"知识库加载完成，内容长度: {len(knowledge)} 字符")
     
     # 3. 开始问答
     logger.info("=== 进入知识库问答模式（输入 exit 退出）===")
