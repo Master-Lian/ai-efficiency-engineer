@@ -1,2 +1,4 @@
-python-dotenv
-openai
+# 进入day01目录
+cd projects/day01
+# 导出依赖
+pip freeze > requirements.txt
