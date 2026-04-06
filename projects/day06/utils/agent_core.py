@@ -12,3 +12,9 @@ def agent_task(task):
         return res.choices[0].message.content
     except:
         return "密钥无效"
+
+from utils.mcp import mcp_invoke
+
+def agent_mcp_task(task_type: str, **params):
+    print(f"🤖 Agent执行任务：{task_type}")
+    return mcp_invoke(skill_name=task_type, **params)

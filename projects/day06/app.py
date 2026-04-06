@@ -59,4 +59,4 @@ elif menu == "🧠 AI 智能体":
 st.sidebar.markdown("---")
 st.sidebar.success("✅ 所有功能安全运行")
 
-# 程序运行：streamlit run app.py
+# streamlit run app.py
