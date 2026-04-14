@@ -1,0 +1,9 @@
+{
+  "desc": "hk travel mini program",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

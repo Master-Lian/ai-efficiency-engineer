@@ -8,7 +8,7 @@ class LLMClient:
             base_url="http://127.0.0.1:8000/v1",
             api_key="test"
         )
-        self.model_path = "/root/autodl-tmp/qwen2-7b-instruct"
+        self.model_path = "qwen-7b"
 
     def chat(self, messages, temperature=0.3):
         """调用大模型，返回文本回答"""
@@ -108,6 +108,7 @@ class SimpleAgent:
         tool_call = self.parse_tool_call(llm_response)
         
         if tool_call:
+            print(f"模型调用工具：{tool_call}")
             # 执行工具
             tool_name = tool_call["tool"]
             params = tool_call["params"]

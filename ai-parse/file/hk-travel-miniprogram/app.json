@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "香港旅游Agent",
+    "navigationBarBackgroundColor": "#0B1B3A",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#081225"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

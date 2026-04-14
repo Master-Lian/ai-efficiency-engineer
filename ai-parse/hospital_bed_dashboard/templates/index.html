@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>医院病床可视化大屏</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+  </head>
+  <body>
+    <div class="screen">
+      <header class="header">
+        <h1>医院病床运营监控大屏</h1>
+        <span id="updatedAt" class="updated-at"></span>
+      </header>
+
+      <section class="overview-cards">
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-bed"></i></div>
+          <div>
+            <p class="card-label">病床总数</p>
+            <h3 id="totalBeds">-</h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-user-injured"></i></div>
+          <div>
+            <p class="card-label">已占用病床</p>
+            <h3 id="occupiedBeds">-</h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-bed-pulse"></i></div>
+          <div>
+            <p class="card-label">空闲病床数</p>
+            <h3 id="freeBeds">-</h3>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div>
+            <p class="card-label">整体占用率</p>
+            <h3 id="occupancyRate">-</h3>
+          </div>
+        </div>
+      </section>
+
+      <main class="content-grid">
+        <section class="panel table-panel">
+          <h2>各医院病床占用率表</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>医院</th>
+                <th>总病床</th>
+                <th>已占用</th>
+                <th>空闲</th>
+                <th>占用率</th>
+              </tr>
+            </thead>
+            <tbody id="hospitalTableBody"></tbody>
+          </table>
+        </section>
+
+        <section class="panel chart-panel">
+          <h2>各医院病床使用率</h2>
+          <div id="hospitalOccupancyChart" class="chart"></div>
+        </section>
+
+        <section class="panel chart-panel">
+          <h2>空闲病床医院分布</h2>
+          <div id="freeBedChart" class="chart"></div>
+        </section>
+
+        <section class="panel chart-panel">
+          <h2>科室病床占用与空闲</h2>
+          <div id="departmentUsageChart" class="chart"></div>
+        </section>
+
+        <section class="panel chart-panel">
+          <h2>区域病床分布</h2>
+          <div id="regionDistributionChart" class="chart"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+  </body>
+</html>

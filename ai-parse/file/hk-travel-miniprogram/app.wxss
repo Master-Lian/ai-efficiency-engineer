@@ -1,0 +1,23 @@
+page {
+  background: #081225;
+  color: #e6efff;
+  font-size: 28rpx;
+}
+
+.container {
+  padding: 24rpx;
+}
+
+.card {
+  background: #0f2247;
+  border: 1rpx solid #294b83;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}

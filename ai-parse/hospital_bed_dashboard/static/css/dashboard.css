@@ -1,0 +1,150 @@
+:root {
+  --bg: #0b1c2c;
+  --panel-bg: #102a43;
+  --card-bg: #173b5f;
+  --text: #e6f1ff;
+  --muted: #9eb3c7;
+  --accent: #4fb3ff;
+  --success: #3ddc97;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Microsoft YaHei", sans-serif;
+  background: radial-gradient(circle at top right, #153a5d, var(--bg));
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.screen {
+  width: 100%;
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.updated-at {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.overview-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(79, 179, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.card-label {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.card h3 {
+  font-size: 24px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  grid-template-rows: repeat(2, 360px);
+  gap: 12px;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.panel h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #cde5ff;
+}
+
+.table-panel {
+  grid-row: span 2;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.chart {
+  width: 100%;
+  height: calc(100% - 28px);
+}
+
+@media (max-width: 1400px) {
+  .overview-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 340px);
+  }
+
+  .table-panel {
+    grid-row: span 1;
+  }
+}

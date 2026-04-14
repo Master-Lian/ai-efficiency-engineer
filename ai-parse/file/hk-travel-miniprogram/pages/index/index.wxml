@@ -1,0 +1,61 @@
+<view class="container">
+  <view class="card">
+    <view class="title">香港旅游Agent（微信小程序）</view>
+    <view class="sub">包含地图、美食、打卡地、预算行程和小红书链接。</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">筛选与行程参数</view>
+
+    <view class="label">偏好分类</view>
+    <picker mode="selector" range="{{categories}}" value="{{categoryIndex}}" bindchange="onCategoryChange">
+      <view class="picker-value">{{categories[categoryIndex]}}</view>
+    </picker>
+
+    <view class="label">游玩天数：{{days}} 天</view>
+    <slider min="1" max="7" step="1" value="{{days}}" bindchange="onDaysChange" activeColor="#4db6ff" />
+
+    <view class="label">门票预算：HKD {{budget}}</view>
+    <slider min="0" max="5000" step="50" value="{{budget}}" bindchange="onBudgetChange" activeColor="#4db6ff" />
+  </view>
+
+  <view class="card">
+    <view class="section-title">香港景点地图</view>
+    <map
+      class="map"
+      longitude="114.1694"
+      latitude="22.3193"
+      scale="{{mapScale}}"
+      markers="{{markers}}"
+      show-location="false"
+      show-compass="true"
+      enable-zoom="true"
+      enable-scroll="true"
+    />
+  </view>
+
+  <view class="card">
+    <view class="section-title">智能推荐行程</view>
+    <view class="summary">推荐 {{planSpots.length}} 个点位，预计门票 HKD {{totalCost}}，总时长 {{totalHours}} 小时</view>
+    <block wx:for="{{planSpots}}" wx:key="id">
+      <view class="spot-item">
+        <view class="spot-name">{{item.name}}（{{item.category}}）</view>
+        <view class="spot-meta">{{item.district}} | HKD {{item.cost}} | {{item.hours}} 小时</view>
+        <view class="spot-note">{{item.note}}</view>
+        <button class="copy-btn" size="mini" data-link="{{item.xhsLink}}" bindtap="onCopyLink">复制小红书攻略链接</button>
+      </view>
+    </block>
+  </view>
+
+  <view class="card">
+    <view class="section-title">Agent 问答</view>
+    <textarea
+      class="agent-input"
+      value="{{agentInput}}"
+      bindinput="onAgentInput"
+      placeholder="输入你的旅游诉求，例如：3天预算1500，偏美食和打卡"
+    />
+    <button class="ask-btn" type="primary" bindtap="onAskAgent">生成建议</button>
+    <view class="agent-reply">{{agentReply}}</view>
+  </view>
+</view>
