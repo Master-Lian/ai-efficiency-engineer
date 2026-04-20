@@ -14,9 +14,9 @@ def build_graph():
     workflow.set_entry_point("agent")
     workflow.add_conditional_edges("agent", tools_condition, {"tools": "retrieve", END: END})
     workflow.add_conditional_edges("retrieve", grade_documents)
+    # workflow.add_edge("rewrite", "agent")
+    workflow.add_edge("rewrite", "retrieve")   # 原来是 "rewrite" -> "agent"
     workflow.add_edge("generate", END)
-    workflow.add_edge("rewrite", "agent")
-
     return workflow.compile()
 
 # 预编译图，供 main 使用

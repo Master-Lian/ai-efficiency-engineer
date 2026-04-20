@@ -114,11 +114,14 @@ def load_vector_store():
 def get_retriever():
     vectorstore = load_vector_store()
     if vectorstore is None:
-        # 检查向量库是否存在
         if os.path.exists(PERSIST_DIR) and os.path.isdir(PERSIST_DIR):
-            print("向量库存在但加载失败，尝试使用备用方法加载...")
-            # 这里可以添加备用加载方法
+            print("向量库加载失败，正在重建...")
+            try:
+                vectorstore = build_vector_store()
+            except Exception as e:
+                print(f"重建向量库失败: {e}")
+                raise
         else:
-            print("未找到向量数据库，开始构建...")
+            print("未找到向量数据库，正在构建...")
             vectorstore = build_vector_store()
     return vectorstore.as_retriever(search_kwargs={"k": RETRIEVAL_K})
