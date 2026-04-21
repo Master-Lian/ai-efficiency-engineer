@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 5g-nr-config
+  namespace: 5g-nr-agents
+data:
+  MODEL_NAME: "deepseek-chat"
+  KNOWLEDGE_BASE: "/app/data/5g_knowledge.md"
+  PERSIST_DIR: "/app/data/chroma_db"
+  EMBEDDING_MODEL: "sentence-transformers/all-MiniLM-L6-v2"
+  RETRIEVAL_K: "3"
+  CHUNK_SIZE: "1000"
+  CHUNK_OVERLAP: "100"
+  SIMILARITY_THRESHOLD: "0.5"
+  LOG_LEVEL: "INFO"

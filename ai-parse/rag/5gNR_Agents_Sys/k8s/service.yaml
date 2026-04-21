@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: 5g-nr-agent-service
+  namespace: 5g-nr-agents
+  labels:
+    app: 5g-nr-agent
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: 5g-nr-agent
