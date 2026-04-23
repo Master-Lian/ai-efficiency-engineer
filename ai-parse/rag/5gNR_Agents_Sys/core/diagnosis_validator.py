@@ -4,7 +4,7 @@
 提供置信度检查、多证据交叉验证、历史一致性检查
 """
 from typing import Any, Dict, List, Optional
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 import logging
 
@@ -28,11 +28,7 @@ class ValidationResult:
     confidence: float = 0.0
     evidence_count: int = 0
     message: str = ""
-    suggestions: List[str] = None
-
-    def __post_init__(self):
-        if self.suggestions is None:
-            self.suggestions = []
+    suggestions: List[str] = field(default_factory=list)
 
     @property
     def is_validated(self) -> bool:

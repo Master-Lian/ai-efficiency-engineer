@@ -4,7 +4,7 @@
 提供风险等级评估、参数边界检查、维护窗口验证
 """
 from typing import Any, Dict, List, Optional
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 import logging
 from datetime import datetime
@@ -27,11 +27,7 @@ class SafetyResult:
     reason: str = ""
     risk_level: OperationRiskLevel = OperationRiskLevel.LOW
     require_approval: bool = False
-    suggestions: List[str] = None
-
-    def __post_init__(self):
-        if self.suggestions is None:
-            self.suggestions = []
+    suggestions: List[str] = field(default_factory=list)
 
 
 class ChangeBoundary:
@@ -277,7 +273,7 @@ class SafetyChecker:
         
         return False
 
-    def add_maintenance_window(self, start_hour: int, end_hour: int, weekdays: List[int] = None):
+    def add_maintenance_window(self, start_hour: int, end_hour: int, weekdays: List[int] = []):
         """添加维护窗口"""
         if weekdays is None:
             weekdays = [0, 1, 2, 3, 4, 5, 6]  # 全周

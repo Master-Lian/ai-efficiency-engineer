@@ -83,6 +83,6 @@ MODEL_CONFIG = ModelConfig()
 THRESHOLD_CONFIG = ThresholdConfig()
 PERFORMANCE_CONFIG = PerformanceConfig()
 
-KNOWLEDGE_BASE_PATH = BASE_DIR / "data" / "5g_knowledge.md"
+KNOWLEDGE_FILE = BASE_DIR / "data" / "5g_knowledge.md"
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379")

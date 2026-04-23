@@ -4,7 +4,7 @@
 提供参数快照、逆序回滚、回滚验证
 """
 from typing import Any, Dict, List, Optional
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 import time
 import logging
@@ -25,16 +25,10 @@ class RollbackResult:
     """回滚结果"""
     status: RollbackStatus
     device_id: str = ""
-    restored_params: Dict = None
-    failed_params: List[str] = None
+    restored_params: Dict = field(default_factory=dict)
+    failed_params: List[str] = field(default_factory=list)
     message: str = ""
     rollback_time_ms: float = 0.0
-
-    def __post_init__(self):
-        if self.restored_params is None:
-            self.restored_params = {}
-        if self.failed_params is None:
-            self.failed_params = []
 
     @property
     def is_success(self) -> bool:

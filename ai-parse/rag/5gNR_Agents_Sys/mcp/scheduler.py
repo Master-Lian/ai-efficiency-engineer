@@ -256,7 +256,7 @@ class MCPScheduler:
         exec_result = self.exec.execute(
             root_causes=decision_result["root_causes"],
             device_id=device_id,
-            rule_recommendations=decision_result.get("rule_recommendations", []),
+            rule_recommendations=decision_result.get("rule_recommendations", []), # pyright: ignore[reportCallIssue]
         )
         
         if exec_result.get("status") == "error":

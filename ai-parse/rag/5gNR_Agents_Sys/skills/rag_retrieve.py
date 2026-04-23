@@ -8,7 +8,7 @@ import logging
 import math
 from collections import Counter
 from core.base_skill import BaseSkill
-from core.config import KNOWLEDGE_BASE_PATH, PERFORMANCE_CONFIG
+from core.config import KNOWLEDGE_FILE, PERFORMANCE_CONFIG
 
 logger = logging.getLogger(__name__)
 
@@ -210,11 +210,11 @@ class RAGRetrieveSkill(BaseSkill):
 
     def _load_knowledge_base(self):
         """加载知识库并构建索引"""
-        if not KNOWLEDGE_BASE_PATH.exists():
-            self._log_execute(f"知识库文件不存在: {KNOWLEDGE_BASE_PATH}", level="warning")
+        if not KNOWLEDGE_FILE.exists():
+            self._log_execute(f"知识库文件不存在: {KNOWLEDGE_FILE}", level="warning")
             return
 
-        with open(KNOWLEDGE_BASE_PATH, "r", encoding="utf-8") as f:
+        with open(KNOWLEDGE_FILE, "r", encoding="utf-8") as f:
             content = f.read()
 
         self._knowledge_chunks = self._chunk_text(content)

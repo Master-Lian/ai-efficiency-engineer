@@ -4,7 +4,7 @@
 提供修复前后指标对比、改善程度计算、达标判断
 """
 from typing import Any, Dict, List, Optional
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 import time
 import logging
@@ -70,17 +70,9 @@ class VerificationResult:
     improvement: Optional[Improvement] = None
     action: str = ""  # close_ticket / rollback / retry / escalate
     message: str = ""
-    pre_metrics: Dict = None
-    post_metrics: Dict = None
-    suggestions: List[str] = None
-
-    def __post_init__(self):
-        if self.pre_metrics is None:
-            self.pre_metrics = {}
-        if self.post_metrics is None:
-            self.post_metrics = {}
-        if self.suggestions is None:
-            self.suggestions = []
+    pre_metrics: Dict = field(default_factory=dict)
+    post_metrics: Dict = field(default_factory=dict)
+    suggestions: List[str] = field(default_factory=list)
 
     @property
     def is_success(self) -> bool:
